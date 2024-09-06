@@ -4,6 +4,7 @@ const { getDocument, createDocument, search } = require('../services/firestore')
 const fetchDocument = async (req, res) => {
     const docId = req.query.id
     try {
+        console.log(docId)
         const response = await getDocument('library', docId)
 
         if(response) {
