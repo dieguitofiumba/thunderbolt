@@ -11,7 +11,7 @@ const getDocument = async (collection, docId) => {
 
         const doc = await admin.firestore().collection(collection).doc(docId).get()
 
-        if(!doc.exist) {
+        if(!doc.exists) {
             return null
         } else {
             return doc.data()
