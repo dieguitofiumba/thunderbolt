@@ -7,7 +7,7 @@ const upstreamStatus = require('../utils/upstreamStatus')
 
 const discordAuth = async (req, res) => {
     const code = req.query.code
-
+    console.log(code)
     try {
 
         const accessToken = await exchangeCode(code)
