@@ -1,4 +1,11 @@
 const admin = require('./firebase')
+
+/**
+ * Gets a QRP Core instance
+ * @param {string} [clientId] If a Client is provided will return its instance
+ * @returns {Promise<Object>} Returns instance/s object
+ */
+
 const getInstance = async (clientId) => {
     try {
         if (clientId) {

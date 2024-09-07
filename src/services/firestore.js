@@ -1,7 +1,7 @@
 const admin = require('../config/firebase')
 
 /** 
- * Gets a document from Firebase
+ * Gets a document from Firestore
  *@param {string} collection - The document collection in Firestore
  *@param {string} docId - The document id reference in Firestore
  *@returns {Promise<Object>} The Firestore document object
