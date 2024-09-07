@@ -66,3 +66,5 @@ const discordAuth = async (req, res) => {
         }
     }
 }
+
+module.exports = discordAuth
