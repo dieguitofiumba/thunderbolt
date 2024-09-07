@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use('/api', library);
 //app.use('/api', dashboard)
-//app.use('/api', auth)
+app.use('/api', auth)
 
 
 const PORT = process.env.PORT || 3000;
