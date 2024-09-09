@@ -14,13 +14,13 @@ const exchangeCode = async (code) => {
 
     const formData = new url.URLSearchParams({
         client_id: '1274629778493800539',
-        client_secret: '1ZrZsjZBHsOEBcpOgHuP4QX4VUQMcfXX',
+        client_secret: process.env.authClientSecret,
         grant_type: 'authorization_code',
         code: code.toString(),
         redirect_uri: 'https://qantasrp.web.app/dashboard/join',
     })
     try {
-        const response = await axios.post(`${discordAPI}/token`,
+        const response = await axios.post(`${discordAPI}/oauth2/token`,
             formData, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

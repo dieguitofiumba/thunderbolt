@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken')
 const secretKey = 'lolitalamasbonitabruno'
 const {exchangeCode, getUserGuilds, getUserInfo, getGuildMember} = require('../services/discordAPI')
+const {createToken, verifyToken} = require('../services/jwt')
 const getInstance = require('../config/qrpcore')
 const upstreamStatus = require('../utils/upstreamStatus')
+
 
 
 const discordAuth = async (req, res) => {
@@ -35,10 +37,10 @@ const discordAuth = async (req, res) => {
 
             const payload = {
                id: userInfo.id,
-               guilds: adminGuilds
-            }
-
-            const token = await jwt.sign(payload, secretKey, {expiresIn: '1h'})
+               
+              }
+              
+              const token = await jwt.sign(payload, secretKey, {expiresIn: '1h'})
 
             res.status(200).json({token: token})
         } else {
@@ -67,4 +69,37 @@ const discordAuth = async (req, res) => {
     }
 }
 
-module.exports = discordAuth
+const generateToken = async (req, res) => {
+
+	const payload = req.body.payload
+
+	try {
+		const token = await createToken(payload)
+
+		return token
+	} catch (error) {
+		res.status(500).json('[SIGA] Server Internal Error')
+	}
+
+}
+
+const validateToken = async (req, res) => {
+	try {
+
+		const token = req.query.token
+		const decoded = await verifyToken(token)
+		res.status(200).json(decoded)
+
+	} catch (error) {
+		if (error.name === 'TokenExpiredError') {
+			res.status(401).json({error: '[SIGA] Token Expired'})
+        } else if (error.name === 'JsonWebTokenError') {
+            res.status(401).json({error: '[SIGA] Invalid Token'})
+        } else {
+            res.status(500).json({error: '[SIGA] Internal Server Error'})
+        }
+	}
+	
+}
+
+module.exports = {discordAuth, generateToken, validateToken}
