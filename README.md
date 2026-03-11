@@ -20,5 +20,13 @@ Aunque hoy escribiría el código de forma distinta, este proyecto fue fundament
 * El flujo de datos entre servidor y cliente.
 
 ---
+
+> [!NOTE]
+> **Nota sobre el historial:** Este repositorio es un registro auténtico de mi camino como desarrollador autodidacta desde mis inicios. Algunos mensajes de commit (el infame `nggus`) fueron escritos a los 16 años y carecen de sentido o profesionalismo. Los preservo no por su contenido, sino como testimonio de mi evolución técnica y personal desde entonces.
+ ---
+> [!NOTE]
+> **Simulación Empresarial:** Las referencias a marcas como *Qantas Airlines* fueron utilizadas exclusivamente como "Mocks" para simular la lógica de microservicios en un entorno corporativo ficticio.
+
 *Archivado por dieguitofiumba - 2026*
+
 
